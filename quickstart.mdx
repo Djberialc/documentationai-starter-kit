@@ -1,0 +1,151 @@
+---
+title: Getting Started with Your Documentation Space
+description: Set up your account and create your first documentation page in just a few minutes to begin organizing your projects.
+---
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- A modern web browser like Chrome, Firefox, or Safari
+- An email address for account verification
+- Optional: Existing Markdown files for import
+
+<Callout kind="info">
+  No prior experience with documentation tools is required. You start creating organized project docs in minutes.
+</Callout>
+
+## Create Your Account and Log In
+
+Sign up for Вячеслав Пономарев in under a minute.
+
+<Tabs>
+  <Tab title="Email Signup" icon="mail">
+    <Steps>
+      <Step title="Visit the site" icon="globe">
+        Go to <code>https://dashboard.example.com/signup</code>.
+      </Step>
+      <Step title="Enter details">
+        Provide your email, name, and a strong password.
+      </Step>
+      <Step title="Verify email">
+        Check your inbox and click the verification link.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Google SSO" icon="google">
+    <Steps>
+      <Step title="Click Google button">
+        Select "Sign up with Google" on the signup page.
+      </Step>
+      <Step title="Authorize">
+        Grant permissions to Вячеслав Пономарев.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Navigate the Dashboard
+
+Once logged in, explore the main interface.
+
+<Steps>
+  <Step title="Access Dashboard" icon="layout">
+    Click the dashboard icon in the top-left menu.
+  </Step>
+  <Step title="View Projects">
+    See your project list. Click <strong>New Project</strong> to start.
+  </Step>
+  <Step title="Browse Pages">
+    Select a project to view its page tree on the left sidebar.
+  </Step>
+</Steps>
+
+## Create and Edit Your First Page
+
+Build your first doc page quickly.
+
+<Steps>
+  <Step title="New Page" icon="plus">
+    In your project, click <strong>New Page</strong> and name it "introduction.mdx".
+  </Step>
+  <Step title="Add Content">
+    Use the visual editor or switch to Markdown mode.
+  </Step>
+  <Step title="Preview and Publish">
+    Preview changes, then click <strong>Publish</strong>.
+  </Step>
+</Steps>
+
+````jsx
+<CodeGroup tabs="Markdown,YAML">
+```markdown
+# Welcome
+
+This is your first page in Вячеслав Пономарев.
+```
+```yaml
+---
+title: Welcome
+description: Your project docs start here.
+---
+```
+</CodeGroup>
+````
+
+## Basic Project Setup
+
+Organize your work efficiently.
+
+1. Create a project named "My Project".
+2. Add sections like `/quickstart`, `/api`.
+3. Set brand color to `#3B82F6` in project settings.
+
+<Callout kind="tip">
+  Use folders to structure pages hierarchically, like `/docs/guides/advanced`.
+</Callout>
+
+## Import Existing Documentation
+
+Bring in your current docs seamlessly.
+
+<CodeGroup tabs="Markdown Upload,API Import">
+  ```javascript
+  // Upload via dashboard API
+  const formData = new FormData();
+  formData.append('file', markdownFile);
+
+  await fetch('https://api.example.com/v1/projects/{PROJECT_ID}/pages/import', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer YOUR_API_KEY`
+    },
+    body: formData
+  });
+  ```
+  ```bash
+  # Drag-and-drop Markdown files directly in the dashboard
+  # Supports .md, .mdx, .rst formats
+  curl -X POST https://api.example.com/v1/import \\
+    -H "Authorization: Bearer YOUR_API_KEY" \\
+    -F "file=@docs.md"
+  ```
+</CodeGroup>
+
+## Next Steps
+
+<Columns cols={3}>
+  <Card title="Introduction" icon="book-open" href="/introduction">
+    Learn core concepts and features.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your docs with API keys.
+  </Card>
+  <Card title="Advanced Guides" icon="trending-up" href="/guides">
+    Dive into customization.
+  </Card>
+</Columns>
+
+<Callout kind="success">
+  You've set up Вячеслав Пономарев! Explore the dashboard and build your docs.
+</Callout>

@@ -1,0 +1,174 @@
+---
+title: Customizing Your Documentation Space
+description: Learn how to tailor the documentation environment to fit your workflow, including settings and integrations.
+---
+
+## Overview
+
+Customize Вячеслав Пономарев's documentation space to match your brand and team needs. Adjust themes, permissions, integrations, notifications, and backups through the dashboard at `https://dashboard.example.com/settings`. Start with simple UI changes or dive into API configurations for automation.
+
+<Columns cols={3}>
+  <Card title="Brand & Themes" icon="palette" href="#brand-themes">
+    Personalize colors and styles.
+  </Card>
+  <Card title="Permissions" icon="shield" href="#permissions">
+    Control user access levels.
+  </Card>
+  <Card title="Integrations" icon="plug" href="#integrations">
+    Connect external tools.
+  </Card>
+  <Card title="Notifications" icon="bell" href="#notifications">
+    Manage alerts and updates.
+  </Card>
+  <Card title="Backups" icon="database" href="#backups">
+    Secure your data exports.
+  </Card>
+</Columns>
+
+## Personalizing Brand Colors and Themes
+
+Update your brand color from the default `#3B82F6` to any hex value. Access the theme editor in dashboard settings.
+
+<Steps>
+  <Step title="Access Settings" icon="settings">
+    Navigate to `https://dashboard.example.com/settings/theme`.
+  </Step>
+  <Step title="Update Color" icon="palette">
+    Enter your hex code, like `#FF6B6B` for red.
+  </Step>
+  <Step title="Preview & Save" icon="check">
+    Preview changes and save.
+  </Step>
+</Steps>
+
+For programmatic changes, use the API:
+
+<CodeGroup tabs="JSON,cURL">
+  ```json
+  {
+    "theme": {
+      "primaryColor": "#3B82F6",
+      "logoUrl": "https://your-logo.com/logo.png"
+    }
+  }
+  ```
+
+  ```bash
+  curl -X PATCH https://api.example.com/v1/config/theme \
+    -H "Authorization: Bearer YOUR_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d '{"theme":{"primaryColor":"#3B82F6"}}'
+  ```
+</CodeGroup>
+
+<Callout kind="tip">
+  Test theme changes in preview mode to avoid disrupting users.
+</Callout>
+
+## Setting Up User Permissions
+
+Define roles like `admin`, `editor`, and `viewer`. Use the permissions matrix below.
+
+| Role    | Read | Write | Admin |
+|---------|------|-------|-------|
+| Admin   | ✅   | ✅    | ✅    |
+| Editor  | ✅   | ✅    | ❌    |
+| Viewer  | ✅   | ❌    | ❌    |
+
+<ParamField path="permissions.role" param-type="string" required="true">
+  User role: `admin`, `editor`, or `viewer`.
+</ParamField>
+
+<ParamField path="permissions.projects" param-type="array" required="false">
+  Array of project IDs: `["proj_123", "proj_456"]`.
+</ParamField>
+
+## Configuring Integrations with External Tools
+
+Connect tools like GitHub, Slack, or Zapier via OAuth.
+
+<Tabs>
+  <Tab title="GitHub" icon="github">
+    Authorize access to repositories.
+
+    <CodeGroup tabs="JavaScript,Python">
+      ```javascript
+      const integration = await fetch('https://api.example.com/v1/integrations/github', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+        body: JSON.stringify({ repo: 'vyacheslav-ponomarev/docs' })
+      });
+      ```
+      ```python
+      import requests
+      response = requests.post(
+        'https://api.example.com/v1/integrations/github',
+        headers={'Authorization': 'Bearer YOUR_TOKEN'},
+        json={'repo': 'vyacheslav-ponomarev/docs'}
+      )
+      ```
+    </CodeGroup>
+  </Tab>
+  <Tab title="Slack" icon="message-circle">
+    Set webhook for notifications.
+
+    ```json
+    {
+      "webhookUrl": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Managing Notification Preferences
+
+Tailor alerts for updates, mentions, and backups.
+
+<Expandable title="Advanced Notification Rules" default-open="false">
+
+Configure via API with filters:
+
+```javascript
+{
+  "notifications": {
+    "email": true,
+    "slack": true,
+    "filters": {
+      "mentionsOnly": true,
+      "highPriority": ">3 updates"
+    }
+  }
+}
+```
+
+</Expandable>
+
+## Backup and Export Configurations
+
+Schedule automated backups to S3 or export MDX files.
+
+<ParamField body="schedule" param-type="string" required="true">
+  Cron expression, e.g., `0 2 * * *` for daily at 2 AM.
+</ParamField>
+
+<ParamField body="storage.bucket" param-type="string" required="false">
+  S3 bucket name: `my-docs-backups`.
+</ParamField>
+
+<Callout kind="alert">
+  Enable encryption for all backups to protect sensitive docs.
+</Callout>
+
+## Troubleshooting Common Issues
+
+- **Theme not applying:** Clear cache and verify hex format.
+- **Permission denied:** Check role assignments in dashboard.
+- **Integration fails:** Regenerate tokens and test endpoints.
+
+Use the API status check:
+
+```bash
+curl https://api.example.com/v1/health
+```
+
+Your customized Вячеслав Пономарев space now aligns with your workflow. Explore [quickstart](/quickstart) for more setup tips.

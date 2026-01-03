@@ -1,0 +1,115 @@
+---
+title: Changelog
+description: Track the latest updates, improvements, and fixes in the Вячеслав Пономарев documentation space.
+---
+
+## Recent Updates
+
+Stay informed about changes in the Вячеслав Пономарев documentation space. You receive notifications for major releases, new features, and critical fixes. Review the details below to understand impacts on your workflow.
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "bugfix", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration editing for shared documents, enabling multiple users to edit simultaneously.
+- Introduced advanced search with filters for tags, dates, and content types.
+
+## Improvements
+
+- Enhanced performance of page rendering by `>30%` for large documentation sites.
+- Updated UI components with the brand color `#3B82F6` for better visual consistency.
+
+## Bug Fixes
+
+- Fixed issue where expandable sections failed to close on mobile devices.
+- Resolved authentication token refresh errors during long sessions.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Integrated Mermaid diagram support directly in MDX pages for flowcharts and sequences.
+- Added changelog tracking with `<Update>` components for automated version history.
+
+## Breaking Changes
+
+- Removed legacy `{single-quote}` attribute support in JSX components; migrate to double quotes.
+
+<CodeGroup tabs="Before,After">
+  ```jsx
+  // Before (deprecated)
+  <Card title='Old Title' />
+  ```
+  ```jsx
+  // After (required)
+  <Card title="New Title" />
+  ```
+</CodeGroup>
+
+## Bug Fixes
+
+- Corrected parsing errors from unescaped `{` and `}` in prose text.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature"]}>
+
+## New Features
+
+- Launched core documentation platform with MDX v2 support and component library.
+- Enabled custom frontmatter for titles and descriptions on all pages.
+
+## Improvements
+
+- Optimized YAML frontmatter parsing to prevent blank line errors.
+
+</Update>
+
+## Upcoming Roadmap
+
+Discover planned enhancements that improve your documentation experience.
+
+<Columns cols={3}>
+  <Card title="AI-Powered Search" icon="search" href="#">
+    Semantic search across all docs with natural language queries.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#">
+    Full Git integration for doc versioning and rollbacks.
+  </Card>
+  <Card title="Export Options" icon="download" href="#">
+    PDF and HTML exports with custom branding.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Subscribe to updates via the dashboard at `https://dashboard.example.com/notifications` to get email alerts for new releases.
+</Callout>
+
+## Stay Updated
+
+Follow these steps to monitor changes effectively.
+
+<Steps>
+  <Step title="Check Regularly" icon="calendar">
+    Visit this changelog page weekly or set browser bookmarks.
+  </Step>
+  <Step title="Enable Notifications" icon="bell">
+    In your dashboard, toggle notifications for "major" and "breaking" tags.
+  </Step>
+  <Step title="Contribute Feedback" icon="message-circle">
+    Use the feedback form to suggest features or report issues.
+  </Step>
+</Steps>
+
+## Migration Guide
+
+For breaking changes like attribute quoting, update your MDX files:
+
+```bash
+# Find and replace single quotes in JSX
+find docs -name "*.mdx" -exec sed -i "s/title='\(.*\)'/title=\"\1\"/g" {} \;
+```
+
+This ensures compatibility with v1.1.0+. Test pages after migration to confirm no parsing errors.

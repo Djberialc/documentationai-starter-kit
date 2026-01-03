@@ -1,0 +1,141 @@
+---
+title: Core Features and Use Cases
+description: Discover the essential tools and capabilities for managing and collaborating on project documentation within the space.
+---
+
+## Overview
+
+Вячеслав Пономарев provides a comprehensive documentation space where you organize, collaborate, and publish project docs efficiently. You manage everything from simple notes to complex technical guides. Core features include project organization, version tracking, collaboration tools, search capabilities, and export options. These tools help teams maintain up-to-date documentation without hassle.
+
+<Callout kind="info">
+  Start by creating a new project to group related docs. Use the dashboard at `https://dashboard.example.com` to access all features.
+</Callout>
+
+## Key Features
+
+Explore the main capabilities through these feature cards.
+
+<Columns cols={3}>
+  <Card title="Project Organization" icon="folder" href="#organizing">
+    Group docs into projects for better structure.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#version-control">
+    Track changes with full history and diffs.
+  </Card>
+  <Card title="Collaboration" icon="users" href="#collaboration">
+    Share and co-edit docs securely.
+  </Card>
+  <Card title="Search & Tags" icon="search" href="#search">
+    Find content quickly with advanced search.
+  </Card>
+  <Card title="Export & Publish" icon="upload-cloud" href="#export">
+    Publish to web or export formats.
+  </Card>
+</Columns>
+
+## Organizing Documentation into Projects
+
+You create projects to categorize docs logically. Each project acts as a workspace with pages, subpages, and folders.
+
+<Steps>
+  <Step title="Create Project" icon="plus">
+    Navigate to `https://dashboard.example.com/projects` and click "New Project".
+  </Step>
+  <Step title="Add Pages" icon="file-text">
+    Inside the project, create pages using the "+" button.
+  </Step>
+  <Step title="Structure Folders">
+    Drag pages into folders for hierarchy.
+  </Step>
+</Steps>
+
+## Version Control and History Tracking
+
+Every edit creates a version. You view history, compare changes, and restore previous versions.
+
+<Tabs>
+  <Tab title="View History" icon="clock">
+    Click the history icon on any page to see timelines.
+  </Tab>
+  <Tab title="Compare Versions" icon="git-compare">
+    Select two versions to see diffs side-by-side.
+  </Tab>
+  <Tab title="Restore" icon="undo">
+    Revert to any version with one click.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="API,CLI">
+  ```javascript
+  // Fetch page history via API
+  const history = await fetch('https://api.example.com/projects/{projectId}/pages/{pageId}/history', {
+    headers: { Authorization: `Bearer ${YOUR_TOKEN}` }
+  });
+  ```
+  ```bash
+  # CLI command to list versions
+  vyacheslav history --project {projectId} --page {pageId}
+  ```
+</CodeGroup>
+
+## Collaboration and Sharing Options
+
+Invite team members and set permissions. You share public links or embed docs.
+
+<Expandable title="Permission Levels" default-open="true">
+  - Viewer: Read-only access
+  - Editor: Modify content
+  - Admin: Manage members and settings
+</Expandable>
+
+<Callout kind="tip">
+  Use role-based access to control who edits sensitive docs.
+</Callout>
+
+## Search and Tagging Functionalities
+
+Tag pages for organization and use full-text search across projects.
+
+| Feature | Description | Example |
+|---------|-------------|---------|
+| Tags | Add custom labels | `#api`, `#frontend` |
+| Search | Keyword or advanced filters | `status: draft tag:api` |
+| Filters | By project, date, author | Date range picker |
+
+## Exporting and Publishing Docs
+
+Publish projects to a custom domain or export to PDF/Markdown.
+
+<Request tabs="JavaScript,cURL" show-lines="true">
+  ```javascript
+  const publish = await fetch('https://api.example.com/projects/{projectId}/publish', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${YOUR_TOKEN}` },
+    body: JSON.stringify({ domain: 'docs.vyacheslav.space' })
+  });
+  ```
+  ```bash
+  curl -X POST https://api.example.com/projects/{projectId}/publish \
+    -H "Authorization: Bearer YOUR_TOKEN" \
+    -d '{"domain": "docs.vyacheslav.space"}'
+  ```
+</Request>
+
+<Response tabs="200">
+  ```json
+  {
+    "status": "published",
+    "url": "https://docs.vyacheslav.space",
+    "formats": ["html", "pdf"]
+  }
+  ```
+</Response>
+
+## Best Practices
+
+- Organize early: Set up projects by feature or team.
+- Tag consistently: Use standard tags like `#docs`, `#changelog`.
+- Review history weekly: Catch issues before they grow.
+- Collaborate via comments: Enable discussions on pages.
+
+These features make Вячеслав Пономарев your go-to for scalable documentation.
